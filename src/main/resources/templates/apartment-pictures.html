@@ -1,0 +1,78 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <script src="jquery-3.5.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cosmo/bootstrap.min.css"/>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</head>
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .topnav {
+        overflow: hidden;
+        background-color: brown;
+    }
+
+    .topnav a {
+        float: left;
+        color: #f2f2f2;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 17px;
+    }
+
+    .topnav a:hover {
+        background-color: #ddd;
+        color: black;
+    }
+
+    .topnav a.active {
+        background-color: #04AA6D;
+        color: white;
+    }
+</style>
+
+<body>
+<div class="topnav">
+    <a class="active" th:href="@{/}">Home</a>
+    <a th:href="@{/addWohnung}">Add Apartment</a>
+    <a th:href="@{/logout}" style="float: right">Logout</a>
+</div>
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <h1 style="text-align: center">Pictures of the Apartment you Selected</h1>
+        <table class="table">
+            <thead class="thead-dark">
+            <tr>
+                <th>Apartment ID</th>
+                <th>Picture ID</th>
+                <th>Picture Type</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="picture:${pictures}">
+                <td th:text="${apartmentname}"></td>
+                <td th:text="${picture.id}"></td>
+                <td th:text="${picture.type}"></td>
+                <td>
+                    <a th:href="@{/apartment/picture/{id}(id=${picture.id})}" target="_blank"
+                       class="btn btn-info">Download</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <a th:href="@{/}" class="btn btn-primary"> Back to Apartments </a>
+    </div>
+</div>
+</body>
+</html>

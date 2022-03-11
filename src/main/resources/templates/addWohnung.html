@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <title>Add Wohnung</title>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+          crossorigin="anonymous">
+</head>
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .topnav {
+        overflow: hidden;
+        background-color: brown;
+    }
+
+    .topnav a {
+        float: left;
+        color: #f2f2f2;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 17px;
+    }
+
+    .topnav a:hover {
+        background-color: #ddd;
+        color: black;
+    }
+
+    .topnav a.active {
+        background-color: #04AA6D;
+        color: white;
+    }
+</style>
+<body>
+<div class="topnav">
+    <a th:href="@{/}">Home</a>
+    <a class="active" th:href="@{/addWohnung}">Add Apartment</a>
+    <a th:href="@{/logout}" style="float: right">Logout</a>
+</div>
+<!--<div class="jumbotron jumbotron-fluid" style="margin-bottom: 0px;">
+    <div class="container">
+        <a class="btn btn-danger" style="float: right" th:href="@{/logout}">Logout</a>
+    </div>
+</div>-->
+<div class="jumbotron jumbotron-fluid">
+
+    <div class="container">
+        <form action="#" th:action="@{/addWohnung}" th:object="${Wohnung}"
+              method="POST" enctype="multipart/form-data">
+            <label>Meter: </label>
+            <input type="text" th:field="*{meter}"
+                   placeholder="Wohnung Größe in m2 " class="form-control mb-4 col-4">
+
+            <label>Price: </label>
+            <input type="text" th:field="*{price}" placeholder="Wohnung preis"
+                   class="form-control mb-4 col-4">
+
+            <label>Status: </label>
+            <input type="text" th:field="*{status}" placeholder="Wohnung Verfügbarkeit" class="form-control mb-4 col-4">
+
+            <label>Date: </label>
+            <input type="text" th:field="*{date}" placeholder="Datum" class="form-control mb-4 col-4">
+            <tr>
+                <label class="form-label">Upload Pictures</label><br>
+                <td><input type="file" name="files" accept="image/png, image/jpeg" multiple/></td>
+            </tr>
+            <button type="submit" class="btn btn-info col-2">Save Wohnung</button>
+        </form>
+    </div>
+</div>
+
+
+</body>
+
+</html>

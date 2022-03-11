@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>Wohnung Management System</title>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+          crossorigin="anonymous">
+
+</head>
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .topnav {
+        overflow: hidden;
+        background-color: brown;
+    }
+
+    .topnav a {
+        float: left;
+        color: #f2f2f2;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 17px;
+    }
+
+    .topnav a:hover {
+        background-color: #ddd;
+        color: black;
+    }
+
+    .topnav a.active {
+        background-color: #04AA6D;
+        color: white;
+    }
+</style>
+<body>
+<div class="topnav">
+    <a class="active" th:href="@{/}">Home</a>
+    <a th:href="@{/addWohnung}">Add Apartment</a>
+    <a th:href="@{/logout}" style="float: right">Logout</a>
+</div>
+<!--<div class="jumbotron jumbotron-fluid" style="margin-bottom: 0px;">
+    <div class="container">
+        <a class="btn btn-danger" style="float: right" th:href="@{/logout}">Logout</a>
+    </div>
+</div>-->
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <h1>Wohnung List</h1>
+        <table border="1" class="table table-striped table-responsive-md">
+            <thead>
+            <tr>
+                <th>Wohnung größe in m2</th>
+                <th>Wohnung Preis</th>
+                <th>Wohnung Status</th>
+                <th>Datum</th>
+                <th>Pictures</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="Wohnung : ${listWohnung}">
+                <td th:text="${Wohnung.meter}"></td>
+                <td th:text="${Wohnung.price}"></td>
+                <td th:text="${Wohnung.status}"></td>
+                <td th:text="${Wohnung.date}"></td>
+                <td><a th:href="@{/apartment/pictures/{apartmentId}(apartmentId=${Wohnung.id})}"
+                       class="btn btn-info">
+                    View Pictures</a></td>
+                <td>
+                    <a th:href="@{/update_Wohnung/{id}(id=${Wohnung.id})}" class="btn btn-primary">Update</a>
+                    <a th:href="@{/deleteWohnung/{id}(id=${Wohnung.id})}" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <a th:href="@{/addWohnung}" class="btn btn-primary btn-sm mb-3"> Add Wohnung </a>
+    </div>
+</div>
+</body>
+</html>
