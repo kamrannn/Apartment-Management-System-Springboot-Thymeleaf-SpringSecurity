@@ -1,23 +1,22 @@
 package edu.fra.uas.service;
 
-import java.util.List;
-
+import edu.fra.uas.model.Wohnung;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-import edu.fra.uas.model.Wohnung;
+import java.util.List;
 
 @Service
 @Component
 public interface wohnungService {
 
-	List<Wohnung> getAllwohnung();
+    List<Wohnung> getAllwohnung();
 
-	void saveWohnung(Wohnung wohnung);
+    void saveWohnung(Wohnung wohnung);
 
-	Wohnung getWohnungById(long id);
+    Wohnung getWohnungById(long id);
 
-	void deleteWohnungById(long id);
+    void deleteWohnungById(long id);
 
-	List<Wohnung> findAllByPriceContaining(String price);
+    List<Wohnung> findAllByPriceContaining(String price);
 }

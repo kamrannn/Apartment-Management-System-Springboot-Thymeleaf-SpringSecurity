@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.List;
 
 @Controller
 public class wohnungController {
@@ -20,6 +21,16 @@ public class wohnungController {
 
     @GetMapping("/")
     public String seeWohnung(Model model) {
+        int totalPrice = 0;
+        List<Wohnung> wohnungList = wohnungService.getAllwohnung();
+        if (wohnungList.size() > 0) {
+            for (Wohnung wohnung : wohnungList
+            ) {
+                totalPrice = totalPrice + Integer.parseInt(wohnung.getPrice());
+            }
+        }
+        model.addAttribute("totalApartments", wohnungList.size());
+        model.addAttribute("totalPrice", totalPrice);
         model.addAttribute("listWohnung", wohnungService.getAllwohnung());
         return "index";
     }

@@ -46,8 +46,9 @@
     <a th:href="@{/logout}" style="float: right">Logout</a>
 </div>
 <div class="jumbotron jumbotron-fluid">
-
     <div class="container">
+        <h1 style="text-align: center; font-family: fantasy;" class="login">Add Wohnung</h1>
+
         <form action="#" th:action="@{/addWohnung}" th:object="${Wohnung}"
               method="POST" enctype="multipart/form-data">
             <label>Meter: </label>

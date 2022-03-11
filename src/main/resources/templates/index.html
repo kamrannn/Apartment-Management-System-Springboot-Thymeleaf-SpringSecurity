@@ -46,14 +46,35 @@
     <a th:href="@{/logout}" style="float: right">Logout</a>
 </div>
 <div class="jumbotron jumbotron-fluid">
-    <form th:action="@{/search}" method="get" style="float: right;margin: 20px;display:flex;">
-        <input type="text" id="price" placeholder="Search by Price" name="price" size="20"/>
-        <br>
-        <button type="submit" class="btn btn-info btn-sm" style="margin-left: 5px">Search</button>
-    </form>
-
+    <div class="container" style="display: grid">
+        <div style="float: left">
+            <h3 style="text-align: center; font-family: fantasy;">Statistics</h3>
+            <table border="1" class="table table-striped table-responsive-md">
+                <thead>
+                <tr>
+                    <th>Total Apartments</th>
+                    <th>Total Price</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td th:text="${totalApartments}"></td>
+                    <td th:text="${totalPrice}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div style="float: right">
+            <form th:action="@{/search}" method="get" style="float: right;margin: 20px;display:flex;">
+                <input type="text" id="price" placeholder="Search by Price" name="price" size="20"/>
+                <br>
+                <button type="submit" class="btn btn-info btn-sm" style="margin-left: 5px">Search</button>
+            </form>
+        </div>
+    </div>
+    <br>
     <div class="container">
-        <h1>Wohnung List</h1>
+        <h3 style="text-align: center; font-family: fantasy;">Wohnung List</h3>
         <table border="1" class="table table-striped table-responsive-md">
             <thead>
             <tr>
