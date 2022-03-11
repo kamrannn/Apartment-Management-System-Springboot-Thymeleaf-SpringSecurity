@@ -61,5 +61,10 @@ public class wohnungController {
         return "redirect:/";
     }
 
+    @GetMapping("/search")
+    public String search(@RequestParam(value = "price") String price, Model model) {
+        model.addAttribute("listWohnung", wohnungService.findAllByPriceContaining(price));
+        return "index";
+    }
 
 }

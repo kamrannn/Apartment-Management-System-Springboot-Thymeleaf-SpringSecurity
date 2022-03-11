@@ -18,4 +18,6 @@ public interface wohnungService {
 	Wohnung getWohnungById(long id);
 
 	void deleteWohnungById(long id);
+
+	List<Wohnung> findAllByPriceContaining(String price);
 }
