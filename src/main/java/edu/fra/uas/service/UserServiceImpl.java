@@ -20,6 +20,11 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     @Autowired
     UserRepository userRepository;
 
+    /**
+     * This is the function which is overrided from the spring security UserDetailsService class.
+     * For login Spring security uses this function to see whether user with this
+     * username is present or not.
+     */
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Optional<User> user = userRepository.findUserByUsername(username);
@@ -35,6 +40,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         userRepository.save(user);
     }
+
 
     @Override
     public Optional<User> findUserByUserName(String username) {

@@ -2,7 +2,6 @@ package edu.fra.uas.model;
 
 public class ResponseFile {
     private Long id;
-//    private String url;
     private String type;
 
     public ResponseFile() {
@@ -15,14 +14,6 @@ public class ResponseFile {
     public void setId(Long id) {
         this.id = id;
     }
-
-/*    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
-    }*/
 
     public String getType() {
         return type;

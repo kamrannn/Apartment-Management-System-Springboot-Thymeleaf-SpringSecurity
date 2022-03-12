@@ -23,6 +23,10 @@ public class Securityconfig extends WebSecurityConfigurerAdapter {
     @Autowired
     UserDetailsService userDetailsService;
 
+    /**
+     * Here now spring security is fetching the data from the database.
+     * By using the method loadbyUserName which is implemented in UserServiceImp class
+     */
     @Override
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder);

@@ -16,17 +16,31 @@ public class UserController {
     @Autowired
     UserServiceImpl userService;
 
+    /**
+     * This is the controller where or login page is getting viewed
+     */
     @GetMapping("/login")
     public String login() {
         return "Login";
     }
 
 
+    /**
+     * This controller will return the registration form
+     */
     @GetMapping("/register/form")
     public String login(Model model) {
         model.addAttribute("user", new User());
         return "Register";
     }
+
+    /**
+     * This controller will get the information from the registration form
+     * And it will save it in the database.
+     * Here I am also checking the user is entering the unique username or not
+     * Everytime a request will come, am checking whether a user exists with that
+     * username or not.
+     */
 
     @PostMapping("/register/user")
     public String register(@Valid User user, BindingResult result, Model model) {
