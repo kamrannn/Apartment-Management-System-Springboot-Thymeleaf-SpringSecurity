@@ -19,6 +19,10 @@ public class wohnungController {
 
     private wohnungService wohnungService;
 
+    /**
+     * This method is getting used to view all the apartments that we have in our database.
+     * This method is also getting used to show the statistics too.
+     */
     @GetMapping("/")
     public String seeWohnung(Model model) {
         int totalPrice = 0;
@@ -35,6 +39,10 @@ public class wohnungController {
         return "index";
     }
 
+    /**
+     * This the controller which is getting used to add an apartment in the database.
+     * So, this method is returning a view to add a new apartment
+     */
     @GetMapping("/addWohnung")
     public String showNewWohnungForm(Model model) {
         // create model attribute to bind form data
@@ -43,6 +51,11 @@ public class wohnungController {
         return "addWohnung";
     }
 
+    /**
+     * This the controller which is getting used to add an apartment in the database.
+     * So, this method is accepting the submission of the data from the form of adding an apartment.
+     * and then saving it to the database with its pictures.
+     */
     @PostMapping("/addWohnung")
     public String saveEmployee(@ModelAttribute("Wohnung") Wohnung wohnung, @RequestParam("files") MultipartFile[] multipartFile) throws IOException {
         // save employee to database
@@ -61,7 +74,6 @@ public class wohnungController {
     public String showFormForUpdate(@PathVariable(value = "id") long id, Model model) {
 
         Wohnung wohnung = wohnungService.getWohnungById(id);
-
         model.addAttribute("Wohnung", wohnung);
         return "update_Wohnung";
     }

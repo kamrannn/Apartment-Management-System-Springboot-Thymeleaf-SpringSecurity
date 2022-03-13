@@ -41,7 +41,6 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         userRepository.save(user);
     }
 
-
     @Override
     public Optional<User> findUserByUserName(String username) {
         return userRepository.findUserByUsername(username);
