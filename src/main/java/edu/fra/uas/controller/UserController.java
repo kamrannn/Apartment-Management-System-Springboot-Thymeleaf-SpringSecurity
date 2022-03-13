@@ -16,6 +16,12 @@ public class UserController {
     @Autowired
     UserServiceImpl userService;
 
+/*    public static boolean isValidPassword(String password, String regex) {
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(password);
+        return matcher.matches();
+    }*/
+
     /**
      * This is the controller where or login page is getting viewed
      */
@@ -23,7 +29,6 @@ public class UserController {
     public String login() {
         return "Login";
     }
-
 
     /**
      * This controller will return the registration form
@@ -44,6 +49,9 @@ public class UserController {
 
     @PostMapping("/register/user")
     public String register(@Valid User user, BindingResult result, Model model) {
+        /*String regex = "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{8,20}$";
+        boolean validPassword = isValidPassword(user.getPassword(), regex);*/
+
         if (result.hasErrors()) {
             return "Register";
         } else if (userService.findUserByUserName(user.getUsername()).isPresent()) {

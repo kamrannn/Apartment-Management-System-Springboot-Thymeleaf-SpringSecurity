@@ -2,6 +2,7 @@ package edu.fra.uas.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 
 @Entity
 @Table(name = "users")
@@ -14,6 +15,7 @@ public class User {
     @NotBlank(message = "User name should not be blank")
     private String username;
     @NotBlank(message = "Password should not be blank")
+    @Pattern(regexp = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{6,}$", message = "Password should contain atleast 1 upper case, 1 lower case, and 1 special character, length 6 or more")
     private String password;
 
     public User() {
